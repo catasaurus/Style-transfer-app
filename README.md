@@ -1,3 +1,1 @@
 # Style-transfer-app
-
-test
