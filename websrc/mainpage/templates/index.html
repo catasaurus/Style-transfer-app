@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Style Transfer</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+
+  	<div class="container">
+  		<section id="welcome-page">
+  			<h1>Welcome!</h1>
+  			<p>Here you can transfer the style of one photo onto another<p>
+  			<p>Click next to continue, you may have to click it two times<p>
+	  		<!---<form action="#style-photo">
+				<input type="submit" value="Next">
+			</form> --->
+			 <a href="/?#style-photo" class="button">Next<a>
+  		</section>
+		<section id="style-photo">
+			<h1>Please upload your image that will be styled and your image that you will use to style the other image</h1>
+			<form class="style-image-form" action="/image-api" method="POST" enctype="multipart/form-data">
+				 {% csrf_token %}
+				 <label for="img">Select style image (image that will be used to style the second image you upload):</label>
+				 <input type="file" id="img" name="img" accept="image/*" class="upload-button">
+				 <label for="img">Select image that will be styled:</label>
+				 <input type="file" id="img" name="img_tostyle" accept="image/*" class="upload-button">
+				 <input type="submit" class="upload-button">
+			</form>
+			<p>Once you submit your images, the server may take up to two minutes to process them. Very rarely does this take two minutes</p>
+  	</div>
+  </body>
+</html>
